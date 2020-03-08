@@ -19,3 +19,17 @@ def getMaximalLengthOfCubePart(cube_parts):
     import numpy as np
     shapes_of_cube_parts = map(np.shape, cube_parts)
     return max(max(shape_of_cube_part) for shape_of_cube_part in shapes_of_cube_parts)
+
+def getObjectInCoordinateSystem(coordinateSystem,point_to_reference_corner_of_cube,shape,dimension=3):
+    import numpy as np
+    desired_object_from_cube_parts = np.zeros(coordinateSystem.shape)
+    desired_object_from_cube_parts[(slice(point_to_reference_corner_of_cube[0],
+                                          point_to_reference_corner_of_cube[0]+max(shape)
+                                          ),
+                                    slice(point_to_reference_corner_of_cube[1],
+                                          point_to_reference_corner_of_cube[1] + max(shape)
+                                          ),
+                                    slice(point_to_reference_corner_of_cube[2],
+                                          point_to_reference_corner_of_cube[2] + max(shape)))] \
+        = np.ones([max(shape)]*dimension)
+    return desired_object_from_cube_parts
