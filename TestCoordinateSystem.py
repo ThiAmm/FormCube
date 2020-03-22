@@ -9,16 +9,16 @@ import numpy.testing as nptesting
 
 class TestCoordinateSystem(unittest.TestCase):
     def test_coordinateSystemForOnePart(self):
-        cube_part = [[[1]]]
+        cube_part = np.array([[[1]]])
         nptesting.assert_equal(getCoordinateSystem([cube_part], [1, 1, 1]), np.array([[[0.]]]))
 
         cube_part = [[[1, 1]]]
         nptesting.assert_equal(getCoordinateSystem([cube_part], [1, 1, 1]), np.zeros((3, 3, 3)))
 
     def test_ReferenceCornerOfDesiredObject(self):
-        cube_part = [[1]]
+        cube_part = np.array([[1]])
         self.assertEqual(getPointToReferenceCornerOfCube([cube_part], (1, 1, 1), 3), [0, 0, 0])
-        cube_part = [[1, 1]]
+        cube_part = np.array([[1, 1]])
         self.assertEqual(getPointToReferenceCornerOfCube([cube_part], (1, 1, 1), 3), [-1, -1, -1])
 
     def test_Object_For_SimpleShapes(self):
@@ -38,10 +38,3 @@ class TestCoordinateSystem(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-[
-    [[1., 1.],
-        [1., 1.]],
-    [[1., 1.],
-    [1., 1.]]
-]
