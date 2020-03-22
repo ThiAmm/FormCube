@@ -24,12 +24,12 @@ def getObjectInCoordinateSystem(coordinateSystem,point_to_reference_corner_of_cu
     import numpy as np
     desired_object_from_cube_parts = np.zeros(coordinateSystem.shape)
     desired_object_from_cube_parts[(slice(point_to_reference_corner_of_cube[0],
-                                          point_to_reference_corner_of_cube[0]+max(shape)
+                                          point_to_reference_corner_of_cube[0]+shape[0]
                                           ),
                                     slice(point_to_reference_corner_of_cube[1],
-                                          point_to_reference_corner_of_cube[1] + max(shape)
+                                          point_to_reference_corner_of_cube[1] + shape[1]
                                           ),
                                     slice(point_to_reference_corner_of_cube[2],
-                                          point_to_reference_corner_of_cube[2] + max(shape)))] \
-        = np.ones([max(shape)]*dimension)
+                                          point_to_reference_corner_of_cube[2] + shape[2]))] \
+        = np.ones(shape)
     return desired_object_from_cube_parts

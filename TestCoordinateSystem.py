@@ -26,6 +26,22 @@ class TestCoordinateSystem(unittest.TestCase):
         nptesting.assert_equal(getObjectInCoordinateSystem(coordinateSystem, [0, 0, 0], (1, 1, 1)),
                                np.array([[[1]]]))
 
+    def test_ObjectWith_LengthTwoTimesOneIsGeneratedCorrectlyInTheCoordinateSystem(self):
+        coordinateSystem = np.array([[[0.,0.,0.],[0.,0.,0.]]])
+        nptesting.assert_equal(getObjectInCoordinateSystem(coordinateSystem, [0, 0, 0], (1, 2, 1)),
+                               np.array([[[1.,0.,0.],[1.,0.,0.]]]))
+
+    def test_ObjectWith_LengthOneTimesTwoIsGeneratedCorrectlyInTheCoordinateSystem(self):
+        coordinateSystem = np.array([[[0., 0., 0.]], [[0., 0., 0.]]])
+        nptesting.assert_equal(getObjectInCoordinateSystem(coordinateSystem, [0, 0, 0], (2, 1, 1)),
+                               np.array([[[1., 0., 0.]], [[1., 0., 0.]]]))
 
 if __name__ == '__main__':
     unittest.main()
+
+[
+    [[1., 1.],
+        [1., 1.]],
+    [[1., 1.],
+    [1., 1.]]
+]
